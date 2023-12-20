@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //   const chiffre = prompt("entrer un numbre");
+      //   if (chiffre > 10 || chiffre < 0) {
+      //     console.log("le numbre nest pas entrer");
+      //   } else {
+      //     while (chiffre >= 0) {
+      //       console.Log(chiffre);
+      //       chiffre--;
+      //     }
+      //   }
+      //   const canDrive = function canDrive(age, pays) {
+      //     if ((age > 18 && pays === "FR") || (age > 16 && pays === "US")) {
+      //       return true;
+      //     }
+      //     return false;
+      //   };
+      //   console.log(canDrive(13, "FR"));
+
+      //   const notes = [12, 13, 14];
+      //   function upNotes(n) {
+      //     n[0]++;
+      //   }
+      //   upNotes(notes);
+      //   console.log(notes);
+      //   function maFonction() {
+      //     console.log(this);
+      //   }
+      //   maFonction.call(3);
+
+      //   const a = {
+      //     firstname: "john",
+      //     lastname: "Doe",
+      //     fullname: function () {
+      //       console.log(`${this.firstname} ${this.lastname}`);
+      //     },
+      //   };
+      //   a.fullname();
+      //   const maF = function (param1 , param2){
+      //     console.loh(param1 , param2, this)
+      //   }
+      //   maF.call(3, 2, 1)
+
+      //   const isPair = function(a , fn){
+      //     if(a % 2 === 0){
+      //         fn(a)
+      //     }
+
+      //   }
+      //   isPair(4 , function(n){
+      //     console.log("mon nombre est pair " + n)
+      //   })
+
+      //   on crée un nombre entre 0 à 10
+      // 3 essaie pour devenit le mot
+      // isRight(n)
+      // guess()
+      // function getRandomInt(max){
+      //     return Math.floor(Math.random() * (max + 1))
+      // }
+      // const solution = getRandomInt(10)
+      // console.log(soluction)
+      // function iRight(n){
+      //     return solution = n
+      // }
+      // function guess(){
+      //     const number = prompt("entrer un chiffre ") * 1
+      //     return isRight (number)
+      // }
+      // for(i = 0; i< 3 ; i++){
+      //     if(guess()){
+      //         console.log("bravo")
+      //         break;
+      //     } else if(i === 2){
+      //         console.log("vous avez perdu")
+      //     }
+
+      // }
+
+      //     function isPremier(n){
+      //   for (var i=2; i<n ; i++)
+      //      if(n%i === 0) return false
+      //     }
+      //     console.log(isPremier(0))
+      function isPalindrom(str) {
+        const elemnt = str.toUpperCase().split("").reverse().join("");
+        return str === elemnt;
+      }
+      console.log(isPalindrom("papa"));
+
+      //   calcule la moyenne des eleve
+      const students = [
+        {
+          name: "johen",
+          notes: [1, 20, 18, 19, 12],
+        },
+        {
+          name: "jane",
+          notes: [17, 12, 14, 15, 13],
+        },
+        {
+          name: "sophie",
+          notes: [17, 12, 14, 15, 13],
+        },
+        {
+          name: "marc",
+          notes: [2, 3, 5, 8, 9],
+        },
+      ];
+      const moyenne = (notes) => {
+        let sum = 0;
+        for (let note of notes) {
+          sum = sum + note;
+        }
+       return (sum / notes.length);
+      };
+
+      const compartStudent = (a, b)=>{
+        return b.moyenne - a.moyenne
+
+      }
+      for (let student of students){
+      student.moyenne = moyenne(student.notes)
+      }
+      students.sort(compartStudent)
+      console.log(students)
+    </script>
+  </body>
+</html>
