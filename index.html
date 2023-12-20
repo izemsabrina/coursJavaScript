@@ -179,6 +179,13 @@
       //   frequencesArry.sort((a, b) => b.count - a.count);
       //   console.log(frequencesArry);
       //   console.log(frequences);
+      const moyenne = (notes) => {
+          let sum = 0;
+          for (let note of notes) {
+            sum = sum + note;
+          }
+          return sum / notes.length;
+        };
       class Student {
         ecole = 'Jule ferry'
         constructor (firstname, lastname){
@@ -189,11 +196,16 @@
             this.notes = notes
             
         }
+        canPass (){
+            return moyenne(this.notes)>=10
+        }
       }
 
       const john = new Student('john', 'doe')
       const jane = new Student('jane', 'doe')
-      console.log(john,jane)
+      john.setNotes([10, 10,9])
+      jane.setNotes([19, 12,13])
+      console.log(john.canPass(),jane.canPass())
       
     </script>
   </body>
