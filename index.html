@@ -92,58 +92,58 @@
       //      if(n%i === 0) return false
       //     }
       //     console.log(isPremier(0))
-      function isPalindrom(str) {
-        const elemnt = str.toUpperCase().split("").reverse().join("");
-        return str === elemnt;
-      }
-      console.log(isPalindrom("papa"));
+      //   function isPalindrom(str) {
+      //     const elemnt = str.toUpperCase().split("").reverse().join("");
+      //     return str === elemnt;
+      //   }
+      //   console.log(isPalindrom("papa"));
 
-      //   calcule la moyenne des eleve
-      const students = [
-        {
-          name: "johen",
-          notes: [1, 20, 18, 19, 12],
-        },
-        {
-          name: "jane",
-          notes: [17, 12, 14, 15, 13],
-        },
-        {
-          name: "sophie",
-          notes: [17, 12, 14, 15, 13],
-        },
-        {
-          name: "marc",
-          notes: [2, 3, 5, 8, 9],
-        },
-      ];
-      const moyenne = (notes) => {
-        let sum = 0;
-        for (let note of notes) {
-          sum = sum + note;
-        }
-        return sum / notes.length;
-      };
+      //   //   calcule la moyenne des eleve
+      //   const students = [
+      //     {
+      //       name: "johen",
+      //       notes: [1, 20, 18, 19, 12],
+      //     },
+      //     {
+      //       name: "jane",
+      //       notes: [17, 12, 14, 15, 13],
+      //     },
+      //     {
+      //       name: "sophie",
+      //       notes: [17, 12, 14, 15, 13],
+      //     },
+      //     {
+      //       name: "marc",
+      //       notes: [2, 3, 5, 8, 9],
+      //     },
+      //   ];
+      //   const moyenne = (notes) => {
+      //     let sum = 0;
+      //     for (let note of notes) {
+      //       sum = sum + note;
+      //     }
+      //     return sum / notes.length;
+      //   };
 
-      const compartStudent = (a, b) => {
-        return b.moyenne - a.moyenne;
-      };
-      for (let student of students) {
-        student.moyenne = moyenne(student.notes);
-        student.worst = Math.min(...student.notes);
-        student.best = Math.max(...student.notes);
-      }
-      students.sort(compartStudent);
-      const formatStudent = (student) => {
-        console.log(
-          ` ${student.name} avec une moyenne de ${student.moyenne} avec sa meilleur node ${student.best} et sa mauvaise note ${student.worst}`
-        );
-      };
-      console.log(students);
-      console.log(`top 3 étudiant
-           1: ${formatStudent(students[0])}
-           2: ${formatStudent(students[1])}
-           3: ${formatStudent(students[2])}`);
+      //   const compartStudent = (a, b) => {
+      //     return b.moyenne - a.moyenne;
+      //   };
+      //   for (let student of students) {
+      //     student.moyenne = moyenne(student.notes);
+      //     student.worst = Math.min(...student.notes);
+      //     student.best = Math.max(...student.notes);
+      //   }
+      //   students.sort(compartStudent);
+      //   const formatStudent = (student) => {
+      //     console.log(
+      //       ` ${student.name} avec une moyenne de ${student.moyenne} avec sa meilleur node ${student.best} et sa mauvaise note ${student.worst}`
+      //     );
+      //   };
+      //   console.log(students);
+      //   console.log(`top 3 étudiant
+      //        1: ${formatStudent(students[0])}
+      //        2: ${formatStudent(students[1])}
+      //        3: ${formatStudent(students[2])}`);
       //   afficher la node maximal et la node minimal
 
       //  calculer la fréquance de mots dans une chaine de caréctaire
@@ -152,33 +152,49 @@
       // splite
       // {vous : 3, moi : 2 }
       //  replace
-      const phrase = `vous savez, moi je ne crois pas que, vous, vous  Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, at facere vero culpa qui suscipit quisquam eveniet exercitationem sit maxime sequi, molestiae doloribus modi a iste ab voluptas quibusdam recusandae? '`;
+      //   const phrase = `vous savez, moi je ne crois pas que, vous, vous  Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, at facere vero culpa qui suscipit quisquam eveniet exercitationem sit maxime sequi, molestiae doloribus modi a iste ab voluptas quibusdam recusandae? '`;
 
-      const frequences = {};
-      const words = phrase
-        .toLowerCase()
-        .replace(/[,!?'"]/g, "")
-        .split(" ");
+      //   const frequences = {};
+      //   const words = phrase
+      //     .toLowerCase()
+      //     .replace(/[,!?'"]/g, "")
+      //     .split(" ");
 
-      for (let word of words) {
-        if (word !== "") {
-          if (frequences[word]) {
-            frequences[word]++;
-          } else {
-            frequences[word] = 1;
-          }
+      //   for (let word of words) {
+      //     if (word !== "") {
+      //       if (frequences[word]) {
+      //         frequences[word]++;
+      //       } else {
+      //         frequences[word] = 1;
+      //       }
+      //     }
+      //   }
+      //   const frequencesArry = [];
+      //   for (let k in frequences) {
+      //     frequencesArry.push({
+      //       word: k,
+      //       count: frequences[k],
+      //     });
+      //   }
+      //   frequencesArry.sort((a, b) => b.count - a.count);
+      //   console.log(frequencesArry);
+      //   console.log(frequences);
+      class Student {
+        ecole = 'Jule ferry'
+        constructor (firstname, lastname){
+          this.firstname = firstname
+          this.lastname = lastname
+        }
+        setNotes (notes){
+            this.notes = notes
+            
         }
       }
-      const frequencesArry = [];
-      for (let k in frequences) {
-        frequencesArry.push({
-          word: k,
-          count: frequences[k],
-        });
-      }
-      frequencesArry.sort((a, b) => b.count - a.count);
-      console.log(frequencesArry);
-      console.log(frequences);
+
+      const john = new Student('john', 'doe')
+      const jane = new Student('jane', 'doe')
+      console.log(john,jane)
+      
     </script>
   </body>
 </html>
