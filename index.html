@@ -6,9 +6,6 @@
     <title>Document</title>
   </head>
   <body>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, at facere
-    vero culpa qui suscipit quisquam eveniet exercitationem sit maxime sequi,
-    molestiae doloribus modi a iste ab voluptas quibusdam recusandae?
     <script>
       //   const chiffre = prompt("entrer un numbre");
       //   if (chiffre > 10 || chiffre < 0) {
@@ -179,34 +176,71 @@
       //   frequencesArry.sort((a, b) => b.count - a.count);
       //   console.log(frequencesArry);
       //   console.log(frequences);
-      const moyenne = (notes) => {
-          let sum = 0;
-          for (let note of notes) {
-            sum = sum + note;
-          }
-          return sum / notes.length;
-        };
-      class Student {
-        ecole = 'Jule ferry'
-        constructor (firstname, lastname){
-          this.firstname = firstname
-          this.lastname = lastname
+      //   const moyenne1 = (notes) => {
+      //       let sum = 0;
+      //       for (let note of notes) {
+      //         sum = sum + note;
+      //       }
+      //       return sum / notes.length;
+      //     };
+      //     const moyenne = ()=>{
+      //      let sum = 0;
+      //      for(let note of notes){
+      //         sum = sum + note
+      //      }
+      //      return sum/notes.length
+
+      //     }
+      //   class Student {
+      //     ecole = 'Jule ferry'
+      //     constructor (firstname, lastname){
+      //       this.firstname = firstname
+      //       this.lastname = lastname
+      //     }
+      //     setNotes (notes){
+      //         this.notes = notes
+
+      //     }
+      //     canPass (){
+      //         return moyenne(this.notes)>=10
+      //     }
+      //   }
+
+      //   const john = new Student('john', 'doe')
+      //   const jane = new Student('jane', 'doe')
+      //   john.setNotes([10, 10,9])
+      //   jane.setNotes([19, 12,13])
+      //   console.log(john.canPass(),jane.canPass())
+
+      class Rectangle {
+        constructor(width, height) {
+          this.width = width;
+          this.height = height;
         }
-        setNotes (notes){
-            this.notes = notes
-            
+
+        get perimeter() {
+          return this.width * 2 + this.height * 2;
         }
-        canPass (){
-            return moyenne(this.notes)>=10
+        get isValid() {
+          return this.width > 0 && this.height > 0;
+        }
+        isBiggerThan (shape){
+          return this.perimeter > shape.perimeter
         }
       }
-
-      const john = new Student('john', 'doe')
-      const jane = new Student('jane', 'doe')
-      john.setNotes([10, 10,9])
-      jane.setNotes([19, 12,13])
-      console.log(john.canPass(),jane.canPass())
-      
+      class Square extends Rectangle {
+        constructor(width) {
+          super(width,width)
+        }
+      }
+      const r = new Rectangle(10, 20);
+      console.log(r.perimeter);
+      console.log(r.isValid);
+      const r2 = new Rectangle(-10, 20);
+      console.log(r2.isValid);
+      const c = new Square(10);
+      console.log(c.perimeter);
+      console.log(c.isBiggerThan(r));
     </script>
   </body>
 </html>
