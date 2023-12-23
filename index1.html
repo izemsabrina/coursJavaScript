@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function addDays(date, days) {
+        const newDate = new Date(date.getTime());
+        date.setDate(newDate.getDate() + days);
+        return date;
+      }
+      const MONTHS = 1;
+      const DAYS = 2;
+      const HOURS = 3;
+      const MINUTES = 4;
+      const SECONDS = 5;
+      const YEARS = 0;
+
+      function addInterval(date, interval) {
+
+
+
+        const newDate = new Date(date.getTime());
+        switch (unit) {
+          case DAYS:
+            newDate.setDate(newDate.getDate() + n);
+            break;
+          case MONTHS:
+            newDate.setDate(newDate.getMonth() + n);
+            break;
+          case YEARS:
+            newDate.setDate(newDate.getFullYear() + n);
+            break;
+        }
+        return newDate;
+      }
+      const today = new Date();
+      const future = addInterval(today, 3, MONTHS);
+      console.log(today);
+      console.log(tomorrow);
+    </script>
+  </body>
+</html>
