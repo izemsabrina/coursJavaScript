@@ -1,29 +1,28 @@
 import { createElement } from "../functions/dom.js";
 
-
 /**
  * @typedef {object} Todo
  * @property {number} id
  * @property {string} title
  * @property {boolean} completed
- * 
+ *
  */
 export class Todolist {
   /** @type {Todo[]} */
-    #todos = []
+  #todos = [];
   /**
-   * 
-   * @param {Todo[]} todos 
+   *
+   * @param {Todo[]} todos
    */
-    constructor(todos) {      
-        this.#todos = todos;   
-    }
-    /**
-     * 
-     * @param {HTMLElement} element 
-     */
-    appendTo (element) {
-        element.innerHTML = `
+  constructor(todos) {
+    this.#todos = todos;
+  }
+  /**
+   *
+   * @param {HTMLElement} element
+   */
+  appendTo(element) {
+    element.innerHTML = `
          <form class="d-flex pb-4">
             <input required="" class="form-control" type="text" placeholder="Acheter des patates..." name="title" data-com.bitwarden.browser.user-edited="yes">
             <button class="btn btn-primary">Ajouter</button>
@@ -39,49 +38,60 @@ export class Todolist {
             
             </ul> 
          </main> 
-        `
-  const list = element.querySelector('.list-group')
-        for (let todo of this.#todos) {
-            const t = new TodoListItem(todo)
-            t.appendTo(list)
-   }
+        `;
+    const list = element.querySelector(".list-group");
+    for (let todo of this.#todos) {
+      const t = new TodoListItem(todo);
+      t.appendTo(list);
     }
+  }
 }
-class TodoListItem{
-    /**
-     * @type {Todo}
-     */
-    #element 
-    constructor(todo) {
-        const id = ` todo-${todo.id}`
-        const li = createElement('li', { class: 'todo list-group-item d-flex align-items-center' })
-        const checkbox = createElement('input', {
-            type: 'checkbox',
-            class: 'form-check-input',
-            id
-        })
-        
-        const label = createElement('label', {
-            class: 'ms-2 form-check-label',
-            for:id
-        })
-        label.innerText = todo.title
-       
-        const button = createElement('button', {
-            class: 'ms-auto btn btn-danger btn-sm'
-        })
-        button.innerHTML = '<i class= "bi-trash"></i>'
-        li.append(checkbox)
-        li.append(label)
-        li.append(button)
-        this.#element = li
+class TodoListItem {
+  /**
+   * @type {Todo}
+   */
+  #element;
+  constructor(todo) {
+    const id = ` todo-${todo.id}`;
+    const li = createElement("li", {
+      class: "todo list-group-item d-flex align-items-center",
+    });
+    const checkbox = createElement("input", {
+      type: "checkbox",
+      class: "form-check-input",
+      id,
+      checked: todo.completed ? '' : null
+    });
 
+    const label = createElement("label", {
+      class: "ms-2 form-check-label",
+      for: id,
+    });
+    label.innerText = todo.title;
 
+    const button = createElement("button", {
+      class: "ms-auto btn btn-danger btn-sm",
+    });
+    button.innerHTML = '<i class= "bi-trash"></i>';
+    li.append(checkbox);
+      li.append(label);
+      
+      button.addEventListener('click',  e => this.remove(e))
+    li.append(button);
+    this.#element = li;
+  }
+  /**
+   * @param {HTMLElement} element
+   */
+  appendTo(element) {
+    element.append(this.#element);
     }
     /**
-     * @param {HTMLElement} element
+     * 
+     * @param {PointerEvent} e 
      */
-    appendTo(element) {
-        element.append(this.#element)
+    remove(e) {
+        e.preventDefault()
+        this.#element.remove()
     }
 }
