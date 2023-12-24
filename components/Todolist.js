@@ -48,10 +48,10 @@ export class Todolist {
     }
     element
       .querySelector("form")
-    .addEventListener("submit", (e) => this.#onsubmit(e));
-      element.querySelectorAll('.btn-group button').forEach(button => {
-        button.addEventListener('click', (e) => this.#toggleFilter(e))
-      });
+      .addEventListener("submit", (e) => this.#onsubmit(e));
+    element.querySelectorAll(".btn-group button").forEach((button) => {
+      button.addEventListener("click", (e) => this.#toggleFilter(e));
+    });
   }
 
   /**
@@ -74,28 +74,28 @@ export class Todolist {
     this.#listElement.prepend(item.element);
     form.reset();
     // console.log(title)
+  }
+  /**
+   * @param {PointerEvent} e
+   */
+  #toggleFilter(e) {
+    e.preventDefault();
+    const filter = e.currentTarget.getAttribute("data-filter");
+    e.currentTarget.parentElement
+      .querySelector(".active")
+      .classList.remove("active");
+    e.currentTarget.classList.add("active");
+    if (filter === "todo") {
+      this.#listElement.classList.add("hide-completed");
+      this.#listElement.classList.remove("hide-todo");
+    } else if (filter === "done") {
+      this.#listElement.classList.add("hide-todo");
+      this.#listElement.classList.remove("hide-completed");
+    } else {
+      this.#listElement.classList.remove("hide-todo");
+      this.#listElement.classList.remove("hide-completed");
     }
-    /**
- * @param {PointerEvent} e
- */
-   #toggleFilter (e) {
-    e.preventDefault()
-       const filter = e.currentTarget.getAttribute('data-filter')
-       e.currentTarget.parentElement.querySelector('.active').classList.remove('active')
-       e.currentTarget.classList.add('active')
-       if (filter === 'todo') {
-           this.#listElement.classList.add('hide-completed')
-           this.#listElement.classList.remove('hide-todo')
-
-       } else if (filter === 'done') {
-           this.#listElement.classList.add('hide-todo')
-           this.#listElement.classList.remove('hide-completed')
-           
-       } else {
-        this.#listElement.classList.remove('hide-todo')
-           this.#listElement.classList.remove('hide-completed')
-       }
-}
+  }
 }
 
 class TodoListItem {
@@ -129,11 +129,9 @@ class TodoListItem {
     li.append(checkbox);
     li.append(label);
     li.append(button);
-    this.toggle(checkbox)
+    this.toggle(checkbox);
     button.addEventListener("click", (e) => this.remove(e));
     checkbox.addEventListener("change", (e) => this.toggle(e.currentTarget));
-
-    
   }
   /**
    * @return {HTMLElement}
